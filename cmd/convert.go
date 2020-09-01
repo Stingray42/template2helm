@@ -146,7 +146,7 @@ func objectToTemplate(objects *[]runtime.RawExtension, templateLabels *map[strin
     // Create chart using map
 	for k, v := range m {
 
-		name := "templates/" + strings.ToLower(k+".yaml")
+		name := "templates/" + k + ".yaml"
 
 		tf := chart.File{
 			Name: name,
@@ -165,7 +165,7 @@ func paramsToValues(param *[]template.Parameter, values *map[string]interface{},
 	v := *values
 
 	for _, pm := range p {
-		name := strings.ToLower(pm.Name)
+		name := pm.Name
 		log.Printf("Convert parameter %s to value .%s", pm.Name, name)
 
 		for i, tf := range t {
